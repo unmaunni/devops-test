@@ -31,3 +31,14 @@
     path: /usr/local/bin/docker-compose
     mode: 0755
   tags: [docker]
+- name: Install docker-machine
+  get_url:
+   url: https://github.com/docker/machine/releases/download/v0.13.0/docker-machine-`uname -s`-`uname -m`
+  dest: /tmp/docker-machine
+  mode: 0755
+
+- name: copy path 
+  copy:
+   src: /tmp/docker-machine
+   dest: /usr/local/bin/docker-machine
+
